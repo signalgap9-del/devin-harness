@@ -87,6 +87,10 @@ docs/
                            across 5 layers + ERP-company translation
   agent-memory.md          MemT/procedural-memory verdict: adopt the
                            experience-bank pattern, skip the model
+  claude-code-feature-map.md  full feature sweep of the reference harness
+                           + official anthropic repos + our gaps
+  adopting-large-oss.md    can this harness ship Odoo-scale OSS to prod?
+                           (yes — and exactly what it takes)
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
