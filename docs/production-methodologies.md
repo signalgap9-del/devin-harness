@@ -44,6 +44,26 @@ Key rules from these: **same artifacts flow through every env** (never
 rebuild for prod), production dev access = read-only + audited exception,
 deploys gated by approval step, DB versioning as its own step.
 
+### Who enforces it — the system, not the doc
+
+Promotion rules aren't "policy people agree to" — each has a mechanical
+enforcer:
+
+| Rule | Enforced by |
+|---|---|
+| same artifact, never rebuild | artifact registry — deploys pin a digest/SHA, so "what was tested" IS "what ships" |
+| approval before prod | GitHub Actions environments (required reviewers + protected branches), Buildkite block step, ArgoCD manual sync, Spinnaker judgment stage |
+| devs read-only in prod | IAM split — the pipeline's OIDC role deploys; humans hold viewer roles; secrets exist only in env-scoped stores |
+| DB versioning separate | its own pipeline stage (migration job), never bundled into app deploy |
+| elevated access audited+expiring | AWS SSO entitlements / Teleport-style grants — approval + auto-expiry + full log |
+
+**Our version today:** the gate runs locally and deploy keys live
+locally. One step to platform-enforced: GitHub Actions `environment:
+production` + required reviewer + prod secrets scoped to that
+environment → "no deploy without sign-off" becomes physics. Add
+`wrangler versions` traffic % on top and that's the AWS model adapted
+to a Workers stack.
+
 ## 3. Change management (the ERP/finance world's spine)
 
 | Concept | What it is |
