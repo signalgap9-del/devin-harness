@@ -29,20 +29,27 @@ invocation is the router — a matching description pulls the skill in.
 (In Cursor this layer needs an explicit router skill — that's what
 pstack's `poteto-mode` is for.)
 
-**Code graph** — the newest layer and the one most setups skip. Instead of
-the agent grep-reading files to reconstruct structure each session, a
-persistent graph (graphify: local tree-sitter AST → queryable graph,
-`file:line` citations, edges tagged EXTRACTED/INFERRED) answers "what uses
-this / what breaks if I change this" directly. Rules in AGENTS.md tell the
-agent to query the graph before the file tree and to `graphify update`
-after edits — the map tracks the code.
+**Code context** — honest version: Anthropic *tried* codebase RAG/indexing
+(Voyage embeddings) and deliberately dropped it for **agentic search** —
+grep/glob/read cycles over the live tree. Boris Cherny's reasons: indexes
+drift out of sync with active code, a hosted index is a security liability,
+and iterative search simply worked better. Cost: latency + tokens. Their
+lever is codebase *legibility* — lean layered CLAUDE.md/AGENTS.md files,
+good naming — not an index.
+
+So grep is not underkill; it is the deliberately chosen standard. A graph
+(graphify: local tree-sitter → queryable graph, `file:line` citations,
+EXTRACTED/INFERRED edge tags) starts paying when: the repo is too big to
+grep-read affordably, many repos share context, or answers need audit-grade
+provenance (regulated/enterprise work). For a single focused repo with a
+good AGENTS.md, agentic search is the Anthropic-matching choice.
 
 **Ledger** — the behavioral record for review.
 
 **Canaries/metrics** — truth about the *running* system, covered in
 `observability.md`.
 
-## Wiring graphify
+## If you do want the graph
 
 ```bash
 uv tool install graphifyy   # or: pipx install graphifyy
@@ -59,7 +66,8 @@ Then AGENTS.md gains two lines:
 Outputs land in `graphify-out/` (`graph.html` visual map, `graph.json`
 queryable). Code parsing is local-only (tree-sitter, no upload); docs/PDFs
 go through your assistant's model — decide before indexing a repo with
-sensitive docs.
+sensitive docs. Revisit when grep cycles start visibly burning session
+time — that's the trigger, not the hype.
 
 ## What this replaces
 

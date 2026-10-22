@@ -64,6 +64,7 @@ docs/
   devin-features.md        Devin capability map (memory, oncall, playbooks…)
   patterns.md              gray failures, fail-loud, canaries, SPOF policy
   observability.md         synthetic checks vs business metrics
+  monitoring-stack.md      the standard small-team stack mapped to serverless
   context-engineering.md   the works-without-hand-feeding stack (AGENTS→graph)
   gap-analysis.md          auditing your own stack honestly (worked example)
   oncall-and-slack.md      Devin Oncall setup + Slack triggers/automations
