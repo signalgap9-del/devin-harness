@@ -1,5 +1,8 @@
 # The OSS stack
 
+> Full 24-entry production catalog (VCS→CI/CD→observability→oncall→flags/
+> secrets) with adoption triggers + ERP mapping: `production-stack-catalog.md`.
+
 Curated tools that this harness assumes or recommends — all free/OSS,
 picked because they cover a layer a prompt can't.
 

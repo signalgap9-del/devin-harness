@@ -83,6 +83,8 @@ docs/
                            Grokbot, cron sweeps each plug in
   harness-vs-labs.md       honest diff vs Anthropic/OpenAI published
                            structure — gaps, fixes, adoption path
+  production-stack-catalog.md  24 verified production frameworks/tools
+                           across 5 layers + ERP-company translation
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
