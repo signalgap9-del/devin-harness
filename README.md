@@ -93,7 +93,14 @@ docs/
                            (yes — and exactly what it takes)
   production-readiness-model.md  control vs data plane, coverage matrix,
                            the real remaining 10% + ERP playbook example
+  production-methodologies.md    TBD/GitHub flow/Gitflow, env promotion,
+                           change mgmt, release trains — all URLs
+  agents-md-layering.md    the hierarchical AGENTS.md system + migration
   ascii-diagrams.md        AWS-style ASCII diagram conventions
+
+templates/
+  agents/                  AGENTS.root + AGENTS.subtree templates —
+                           the layering system ready to fill in
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
 
