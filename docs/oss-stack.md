@@ -34,14 +34,28 @@ picked because they cover a layer a prompt can't.
 If you outgrow it: Prometheus/Grafana or Datadog for real metrics infra —
 the doctrine in `observability.md` transfers unchanged.
 
-## Agent orchestration
+## Workflow packs
 
-| Tool | Role |
-|---|---|
-| grokbot.dev templates (e.g. "Devin Manager") | Grok Bot opens/watches/steers Devin sessions from chat |
-| crosswalk.to | MCP message bus for agent↔agent task handoff |
-| Composio Devin MCP | managed OAuth + 1,500 integrations + audit trail |
-| Devin API | programmatic session control without a middle bot |
+| Tool | Layer | Note |
+|---|---|---|
+| **pstack** (Lauren Tan / @poteto) | Cursor plugin: `poteto-mode` router → 10 workflow skills (how, why, architect, arena, unslop, interrogate, automate-me, reflect, tdd) + 17 first-principles skills | The "1,000 PRs/month" workflow. Its router exists because Cursor has no auto-invocation — Devin skills self-select, so port the *workflows* (verification depth, arena's multi-model challenge), not the router |
+| **open-pstack** (ericlitman, MIT) | Claude Code / Codex port of pstack, tracks upstream | Use this if the main harness isn't Cursor |
+| cursor/plugins (official) | continual-learning (AGENTS.md memory updates), thermos (deep branch review), cli-for-agent (agent-safe CLI design), cursor-team-kit | Plugin specs worth mining for patterns even without Cursor |
+
+What pstack adds that a skills dir alone doesn't: **verification discipline
+as a workflow** — learn the system before changing it, run the real behavior
+not just tests, arena-challenge important decisions across models. Pair it
+with deterministic enforcement (our hooks) — pstack shapes the agent's
+judgment; hooks make sure judgment lapses can't execute.
+
+## Code context
+
+| Tool | Layer | Note |
+|---|---|---|
+| **graphify** (Apache-2.0) | Local code knowledge graph — tree-sitter AST → queryable graph, `file:line` citations, edges tagged EXTRACTED/INFERRED, `graph.html` visual map | The anti-grep layer: agent queries structure instead of re-reading the repo. `uv tool install graphifyy` + `graphify install` + AGENTS.md rules. See `context-engineering.md` |
+| Devin Memory | personal cross-session corrections | repo rules are shared truth; memory is learned truth |
+
+## Agent orchestration
 
 ## Rule
 

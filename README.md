@@ -64,10 +64,12 @@ docs/
   devin-features.md        Devin capability map (memory, oncall, playbooks…)
   patterns.md              gray failures, fail-loud, canaries, SPOF policy
   observability.md         synthetic checks vs business metrics
+  context-engineering.md   the works-without-hand-feeding stack (AGENTS→graph)
+  gap-analysis.md          auditing your own stack honestly (worked example)
   oncall-and-slack.md      Devin Oncall setup + Slack triggers/automations
   security-and-ci.md       scanners in the gate + the gate pipeline itself
   agent-orchestration.md   Grok Bot → Devin, crosswalk, Composio paths
-  oss-stack.md             curated OSS per layer (impeccable, gitleaks…)
+  oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
 
 MIT — take what fits, leave what doesn't.
