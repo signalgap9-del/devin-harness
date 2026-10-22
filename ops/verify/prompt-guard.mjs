@@ -24,18 +24,34 @@ process.stdin.on("data", d => prompt += d).on("end", () => {
     /(documentation|docs say|official|recommended way|best practice)/,
   ];
   const hit = EXTERNAL.some(r => r.test(p));
-  if (!hit) process.exit(0);
 
-  console.log(JSON.stringify({
-    additionalContext: [
-      "SOURCE-VERIFICATION REQUIRED (injected by prompt-guard hook):",
-      "This question depends on external facts. Before answering:",
-      "1. Run at least one web_search.",
-      "2. Fetch the primary source (official docs/repo/spec), not a blog summary.",
-      "3. Cite what is verified vs inferred vs unverified — do not present",
-      "   memory as fact. If sources conflict, say so and show both.",
-      "4. If you cannot verify something, say 'unverified beyond X' rather",
-      "   than guessing.",
-    ].join("\n"),
-  }));
+  // Capability questions ("is there a tool for", "how do we do X") route to
+  // the catalog BEFORE anything gets hand-rolled — the use-the-stack rule,
+  // enforced deterministically so it doesn't depend on skill goodwill.
+  const CAPABILITY = [
+    /is there (a|an|any|some)?\s*(good\s+|decent\s+|real\s+)?(tool|library|oss|open[- ]source|service|framework|cli|plugin)s? (for|that|to)/,
+    /what (tool|library|framework|oss) (should|would|do)/,
+    /(build|write|make|create|implement).{0,30}(script|tool|hook|workflow|dashboard|index|monitor|alert)/,
+  ];
+  const cap = CAPABILITY.some(r => r.test(p));
+  if (!hit && !cap) process.exit(0);
+
+  const parts = [];
+  if (cap) parts.push(
+    "STACK-CHECK REQUIRED (injected by prompt-guard hook):",
+    "Before building anything, look up the layer in docs/oss-adoption.md —",
+    "prefer READY/OSS entries over hand-rolling. If you write custom code",
+    "anyway, it must be the repo-specific residue no OSS covers.",
+    "");
+  if (hit) parts.push(
+    "SOURCE-VERIFICATION REQUIRED (injected by prompt-guard hook):",
+    "This question depends on external facts. Before answering:",
+    "1. Run at least one web_search.",
+    "2. Fetch the primary source (official docs/repo/spec), not a blog summary.",
+    "3. Cite what is verified vs inferred vs unverified — do not present",
+    "   memory as fact. If sources conflict, say so and show both.",
+    "4. If you cannot verify something, say 'unverified beyond X' rather",
+    "   than guessing.",
+  );
+  console.log(JSON.stringify({ additionalContext: parts.join("\n") }));
 });

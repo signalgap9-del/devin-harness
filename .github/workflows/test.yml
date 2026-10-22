@@ -1,0 +1,13 @@
+# The harness's own CI — public-green gate like every GOV.UK repo runs.
+name: harness
+on: [push, pull_request]
+permissions: {}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test ops/verify/harness.test.mjs
