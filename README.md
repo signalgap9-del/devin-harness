@@ -75,6 +75,9 @@ docs/
                            harness/App Server) actually build — Oct 2026
   decision-models.md       typed-judgment layer (Jev, Decision API) + how
                            the gate uses it
+  release-engineering.md   deploy stack vs production baseline — Scion
+                           question, parallel-agent risks, gap list
+  ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
 
