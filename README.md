@@ -98,6 +98,9 @@ docs/
   release-orchestration.md       the finished machines (Octopus, GitLab,
                            Harness, ServiceNow DevOps) + GOV.UK's real
                            public pipeline as reference architecture
+  gds-style-playbook.md          rebuild a GOV.UK/GDS-style standards
+                           system at any company — components, OSS
+                           frameworks, build order
   agents-md-layering.md    the hierarchical AGENTS.md system + migration
   ascii-diagrams.md        AWS-style ASCII diagram conventions
 
