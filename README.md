@@ -85,6 +85,8 @@ docs/
                            structure — gaps, fixes, adoption path
   production-stack-catalog.md  24 verified production frameworks/tools
                            across 5 layers + ERP-company translation
+  agent-memory.md          MemT/procedural-memory verdict: adopt the
+                           experience-bank pattern, skip the model
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
