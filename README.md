@@ -91,6 +91,8 @@ docs/
                            + official anthropic repos + our gaps
   adopting-large-oss.md    can this harness ship Odoo-scale OSS to prod?
                            (yes — and exactly what it takes)
+  production-readiness-model.md  control vs data plane, coverage matrix,
+                           the real remaining 10% + ERP playbook example
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
