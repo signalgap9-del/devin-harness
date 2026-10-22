@@ -3,3 +3,9 @@ ops/verify/action-log.jsonl
 .devin/mcp_config.json
 *.log
 node_modules/
+.agent/
+.agents/
+.claude/
+.cursor/
+.gemini/
+.grok/

@@ -16,8 +16,9 @@ of a blank context.
 | Action ledger | `ops/verify/agent-ledger.mjs` | PostToolUse hook — appends every tool call (secrets redacted) to `action-log.jsonl` so a judge can review the *session*, not just the diff. |
 | Hook wiring | `.devin/config.json` + `hooks.v1.json` | Turns the three guards on for every session in this repo. |
 | MCP config | `.devin/mcp_config.example.json` | Example MCP servers (gcloud, browser, provider SDKs) with env-var indirection — never keys in the file. |
+| Business metrics | `ops/verify/business-metrics.example.mjs` | Cron-swept checks that ask "is work actually flowing" — zero-floor, rate-collapse, false-success patterns. See `docs/observability.md`. |
 | Skills | `.devin/skills/` | Domain skills the agent auto-invokes: SEO, ads-ops, copywriting, landing pages, CRO, ICP, audience research, quality judging. MIT sources in `ATTRIBUTION.md`. |
-| Docs | `docs/` | The pattern library (gray failures, canaries, fail-loud) + a Devin feature map. |
+| Docs | `docs/` | The pattern library: observability, on-call/Slack wiring, security+CI, agent orchestration (Grok↔Devin), OSS stack, Devin feature map. |
 
 ## Quickstart
 
@@ -55,12 +56,18 @@ action ledger.
   mcp_config.example.json  MCP server template
   skills/                  agent skills (auto-invoked by task match)
 ops/verify/
-  agent-guard.mjs          pre-exec command rules
-  file-guard.mjs           pre-edit file rules
-  agent-ledger.mjs         post-tool action log
+  agent-guard.mjs              pre-exec command rules
+  file-guard.mjs               pre-edit file rules
+  agent-ledger.mjs             post-tool action log
+  business-metrics.example.mjs business-metric sweep skeleton
 docs/
   devin-features.md        Devin capability map (memory, oncall, playbooks…)
   patterns.md              gray failures, fail-loud, canaries, SPOF policy
+  observability.md         synthetic checks vs business metrics
+  oncall-and-slack.md      Devin Oncall setup + Slack triggers/automations
+  security-and-ci.md       scanners in the gate + the gate pipeline itself
+  agent-orchestration.md   Grok Bot → Devin, crosswalk, Composio paths
+  oss-stack.md             curated OSS per layer (impeccable, gitleaks…)
 ```
 
 MIT — take what fits, leave what doesn't.
