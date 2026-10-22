@@ -54,7 +54,20 @@ good AGENTS.md, agentic search is the Anthropic-matching choice.
 ```bash
 uv tool install graphifyy   # or: pipx install graphifyy
 graphify install            # registers the skill for your assistant
+                            # (--platform codex|opencode|claw also works)
 ```
+
+Architecture (verified, pytorch.kr writeup + repo): **two-pass** —
+deterministic tree-sitter AST extraction runs locally with *no LLM*,
+then parallel LLM subagents extract semantic relations from docs/PDFs/
+diagrams. Merged into a NetworkX graph, Leiden-clustered into
+communities. Every edge is confidence-tagged: `EXTRACTED` (1.0, from
+code) / `INFERRED` (scored, from docs) / `AMBIGUOUS` — honesty is built
+into the data model. Outputs: `graph.html` explorer, `GRAPH_REPORT.md`
+(god nodes + surprising connections + suggested questions), `graph.json`
+(persistent), SHA256 cache (re-runs process changed files only).
+`--neo4j` export exists. Verified benchmark: 71.5× token reduction on
+the karpathy-repos corpus (~123k → ~1.7k/query).
 
 Then AGENTS.md gains two lines:
 
@@ -63,11 +76,13 @@ Then AGENTS.md gains two lines:
 - After editing code: `graphify update .` — keep the map current.
 ```
 
-Outputs land in `graphify-out/` (`graph.html` visual map, `graph.json`
-queryable). Code parsing is local-only (tree-sitter, no upload); docs/PDFs
-go through your assistant's model — decide before indexing a repo with
-sensitive docs. Revisit when grep cycles start visibly burning session
-time — that's the trigger, not the hype.
+Costs/caveats (be honest): indexing spends LLM tokens on docs/PDFs;
+`INFERRED` edges must not be trusted like `EXTRACTED` ones; the graph
+**goes stale** unless updated — a stale map teaches wrong. Freshness
+ownership: a cron or Grokbot-dispatched "refresh graphify index" task
+after N merges fits the dispatcher role (`grokbot-architecture.md`) —
+maintenance work, not judgment work. Trigger to adopt remains: grep
+cycles visibly burning session time, or multi-repo/onboarding-heavy work.
 
 ## What this replaces
 

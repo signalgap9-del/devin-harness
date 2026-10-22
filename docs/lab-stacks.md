@@ -75,6 +75,44 @@ App Server = bidirectional JSON-RPC between harness and every surface
   context compaction took GPT-5.6 Sol from 13.3% → 38.3% while cutting
   output tokens 6×. Model same, harness different, score tripled.
 
+### October 2026 addendum (full sweep)
+
+Anthropic engineering/research, Oct 2026:
+
+- **Oct 16 — "How employment is changing at Anthropic"** (Economics):
+  interactive agent hours outnumbered employee hours **6:1** by August.
+  Employees' new bottleneck is *attention* — reading agent output alone
+  would take half the work week → they pivot to "meta-work": building
+  visibility tools and monitoring agent pipelines. This is the exact
+  argument for our ledger + review surface + dispatcher layer.
+- **Oct 20 — "Using Claude to reduce the attack surface of code"**
+  (Frontier Red Team) — agent-driven vuln discovery/removal at scale.
+- **Oct 2 — Claude Frontier Academy**: $100M to train 10,000 "Frontier
+  Deployed Engineers" (Accenture, Deloitte, CBA, Novo Nordisk cohorts).
+  Anthropic is productizing *agentic engineering skill* itself — this
+  repo is our version of that curriculum.
+
+OpenAI Codex, Oct 2026 — the daily-grind evidence (28-day shipping
+sprint, Oct 5–Nov 1, tracked publicly):
+
+- **12h prompt caching** in the API; Codex & Work keep cache "forever" —
+  resume hours later, guaranteed cache hit. Context-cost is their #1
+  engineering axis right now.
+- **Cross-subagent context reuse + request routing** → effective usage up.
+- **Codex CLI 0.163**: parallel read-only tools (skill/memory/history
+  lookups), follow-up steering mid-turn, `/daemon` restart, Daybreak
+  (cyber-defense harness) default-on.
+- Blog: **"Rethinking skills and prompts for GPT-6 Astra"** — literally
+  "revisit skill descriptions, AGENTS.md, and task prompts to avoid
+  bloated context." Our monolith-AGENTS.md gap is their documented pain
+  too — validates the hierarchical split.
+- Blog: **"Automating repetitive work with Codex"** — Runme + WebMCP
+  turning recurring eng tasks into reviewable reusable workflows (≈ our
+  skills + playbooks).
+- Blog: "Custom Code Review rules", "skills to accelerate OSS
+  maintenance", "Remote engineering from your phone", 1B-user storage
+  scaling, ChatGPT ad stack.
+
 ## What transfers to a two-person SaaS
 
 | Lab-scale thing | Our equivalent |

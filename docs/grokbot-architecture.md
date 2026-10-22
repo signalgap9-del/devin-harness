@@ -65,6 +65,21 @@ GET /rss.xml               RSS mirrors
 No auth, CORS `*`, `api_version` + `schema_revision` in envelopes — the
 contract a bot consumes to discover new capabilities on a schedule.
 
+## Concrete example — who owns index freshness
+
+A knowledge index (graphify-style) goes stale as code lands. That's
+**maintenance work, not judgment work** — exactly the dispatcher slot:
+
+```
+merge lands ──► Grokbot dispatches "graphify update" session (or cron)
+                     │
+                     ▼
+              graph.json refreshed ──► next dev session queries a warm map
+```
+
+The bot never writes the index and never answers structural questions —
+it only guarantees someone always does.
+
 ## Rules that keep it sane
 
 - Orchestrator manages, executor executes — bots spec jobs and review
