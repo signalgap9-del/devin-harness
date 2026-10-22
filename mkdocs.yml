@@ -36,6 +36,7 @@ nav:
     - docs/testing-strategy.md
     - docs/security-and-ci.md
   - Agent system:
+    - docs/agent-perception.md
     - docs/context-engineering.md
     - docs/agents-md-layering.md
     - docs/agent-orchestration.md
