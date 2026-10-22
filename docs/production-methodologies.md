@@ -129,3 +129,7 @@ Link: https://www.anthropic.com/news/claude-frontier-academy
 - Anthropic engineering index: https://www.anthropic.com/engineering
 - OpenAI engineering index: https://openai.com/news/engineering/
 - Codex blog index: https://developers.openai.com/blog/topic/codex
+- GDS Way (UK gov engineering standards, public): https://gds-way.digital.cabinet-office.gov.uk/
+- GOV.UK developer manual (real pipeline + runbooks): https://docs.publishing.service.gov.uk/manual/
+- GOV.UK RFCs: https://github.com/alphagov/govuk-rfcs
+- Octopus (enterprise CD): https://octopus.com/docs
