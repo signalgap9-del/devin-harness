@@ -1,0 +1,51 @@
+# mkdocs-material — OSS docs site (squidfunk.github.io/mkdocs-material, MIT).
+# All docs/ render as a navigable site: `pip install mkdocs-material && mkdocs serve`
+site_name: devin-harness
+site_description: Agent-harness starter — guards, hooks, skills, production playbooks
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+nav:
+  - README: README.md
+  - Start here:
+    - docs/autonomous-ops.md
+    - docs/oss-adoption.md
+    - docs/oss-stack.md
+  - How labs build:
+    - docs/lab-stacks.md
+    - docs/harness-vs-labs.md
+    - docs/claude-code-feature-map.md
+  - Production method:
+    - docs/production-methodologies.md
+    - docs/release-orchestration.md
+    - docs/release-engineering.md
+    - docs/production-stack-catalog.md
+    - docs/platform-toolkit.md
+    - docs/gds-style-playbook.md
+    - docs/production-readiness-model.md
+    - docs/adopting-large-oss.md
+  - Ops patterns:
+    - docs/patterns.md
+    - docs/observability.md
+    - docs/monitoring-stack.md
+    - docs/oncall-playbooks.md
+    - docs/oncall-and-slack.md
+    - docs/testing-strategy.md
+    - docs/security-and-ci.md
+  - Agent system:
+    - docs/context-engineering.md
+    - docs/agents-md-layering.md
+    - docs/agent-orchestration.md
+    - docs/agent-memory.md
+    - docs/decision-models.md
+    - docs/devin-features.md
+    - docs/grokbot-architecture.md
+    - docs/gap-analysis.md
+    - docs/ascii-diagrams.md
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true

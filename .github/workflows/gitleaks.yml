@@ -1,0 +1,17 @@
+# gitleaks — OSS secret scanner (github.com/gitleaks/gitleaks, MPL-2.0).
+# Blocks secret material at PR/push level — the CI-side of what file-guard
+# does pre-edit. Zero config needed; add .gitleaks.toml to customize.
+name: gitleaks
+on: [push, pull_request]
+permissions: {}
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITLEAKS_ENABLE_COMMENTS: true
+          GITLEAKS_ENABLE_SUMMARY: true

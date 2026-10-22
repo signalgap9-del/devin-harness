@@ -124,6 +124,8 @@ docs/
   agents-md-layering.md    the hierarchical AGENTS.md system + migration
   autonomous-ops.md        the full autonomy stack — every layer that lets
                            an agent code unsupervised, what we have, gaps
+  oss-adoption.md          THE curation index — every OSS tool surfaced,
+                           status per tool: adopted / ready / deferred / no
   ascii-diagrams.md        AWS-style ASCII diagram conventions
 
 templates/
