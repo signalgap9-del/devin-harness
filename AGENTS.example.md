@@ -22,6 +22,9 @@ npx tsc --noEmit      # typecheck scope + known baselines
   server-side only — never exposed to clients.
 - Verify before claiming: run the real command, hit the real endpoint.
   A 200 on a page is not proof a user journey works.
+- Claims about external tools/architectures get sources or get marked
+  unverified — the `verify-with-sources` skill owns the workflow; never
+  answer stack questions from memory alone.
 
 ## Deploy rule
 

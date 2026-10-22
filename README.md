@@ -17,7 +17,7 @@ of a blank context.
 | Hook wiring | `.devin/config.json` + `hooks.v1.json` | Turns the three guards on for every session in this repo. |
 | MCP config | `.devin/mcp_config.example.json` | Example MCP servers (gcloud, browser, provider SDKs) with env-var indirection — never keys in the file. |
 | Business metrics | `ops/verify/business-metrics.example.mjs` | Cron-swept checks that ask "is work actually flowing" — zero-floor, rate-collapse, false-success patterns. See `docs/observability.md`. |
-| Skills | `.devin/skills/` | Domain skills the agent auto-invokes: SEO, ads-ops, copywriting, landing pages, CRO, ICP, audience research, quality judging. MIT sources in `ATTRIBUTION.md`. |
+| Skills | `.devin/skills/` | Domain skills the agent auto-invokes: SEO, ads-ops, copywriting, landing pages, CRO, ICP, audience research, quality judging, **verify-with-sources** (forced primary-source research). MIT sources in `ATTRIBUTION.md`. |
 | Docs | `docs/` | The pattern library: observability, on-call/Slack wiring, security+CI, agent orchestration (Grok↔Devin), OSS stack, Devin feature map. |
 
 ## Quickstart
@@ -70,6 +70,9 @@ docs/
   oncall-and-slack.md      Devin Oncall setup + Slack triggers/automations
   security-and-ci.md       scanners in the gate + the gate pipeline itself
   agent-orchestration.md   Grok Bot → Devin, crosswalk, Composio paths
+  grokbot-architecture.md  Grok Bot anatomy + the three integration paths
+  lab-stacks.md            how Anthropic (Scion, auto-mode) & OpenAI (Codex
+                           harness/App Server) actually build — Oct 2026
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
 
