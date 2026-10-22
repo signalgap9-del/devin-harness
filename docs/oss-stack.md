@@ -48,6 +48,14 @@ not just tests, arena-challenge important decisions across models. Pair it
 with deterministic enforcement (our hooks) — pstack shapes the agent's
 judgment; hooks make sure judgment lapses can't execute.
 
+## Decision models (typed judgment)
+
+| Tool | Layer | Note |
+|---|---|---|
+| **Jev / jev-use** (TypeSafe AI, MIT) | System One decision model — typed questions → probabilities, not prose | Powers this harness's deploy-gate judge (`jev typed judgment` step). Details in `decision-models.md` |
+| **Decision API** (decisionapi.org) | multi-model workbench: jev-1.13, solar-decide, kev-4b, liquid d1, laya | one `POST /v1/systemone` swaps the judge model |
+| jev-review / jev-agent-mcp / diffjury | staged review UI, diff-judging MCP tool, PR risk router | ecosystem around the same pattern |
+
 ## Code context
 
 | Tool | Layer | Note |
