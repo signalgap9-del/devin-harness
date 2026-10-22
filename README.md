@@ -101,6 +101,9 @@ docs/
   gds-style-playbook.md          rebuild a GOV.UK/GDS-style standards
                            system at any company — components, OSS
                            frameworks, build order
+  platform-toolkit.md            ADR mechanics, reusable-workflow anatomy,
+                           Backstage/IDP landscape, AGENTS.md split —
+                           company-production level
   agents-md-layering.md    the hierarchical AGENTS.md system + migration
   ascii-diagrams.md        AWS-style ASCII diagram conventions
 
