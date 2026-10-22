@@ -34,9 +34,24 @@ process.stdin.on("data", d => prompt += d).on("end", () => {
     /(build|write|make|create|implement).{0,30}(script|tool|hook|workflow|dashboard|index|monitor|alert)/,
   ];
   const cap = CAPABILITY.some(r => r.test(p));
-  if (!hit && !cap) process.exit(0);
+
+  // Dense multi-clause short prompts = the misread profile. When a prompt
+  // packs 3+ topic fragments into few chars, more than one reading is
+  // usually plausible — force a one-line restate before executing. This
+  // hook exists because the owner types fast and terse; the literal
+  // reading must win over the interesting one.
+  const segments = prompt.split(/[,.\n!?]|그럼|그리고|아니/).filter(s => s.trim().length > 4).length;
+  const ambig = segments >= 3 && prompt.length < 320;
+  if (!hit && !cap && !ambig) process.exit(0);
 
   const parts = [];
+  if (ambig) parts.push(
+    "RESTATE-FIRST REQUIRED (injected by prompt-guard hook):",
+    "This prompt packs multiple fragments — more than one reading is",
+    "plausible. Before doing ANY work: state your interpretation in ONE",
+    "line. If two readings diverge materially, ask via ask_user_question",
+    "instead of picking the interesting one. Literal > pattern-matched.",
+    "");
   if (cap) parts.push(
     "STACK-CHECK REQUIRED (injected by prompt-guard hook):",
     "Before building anything, look up the layer in docs/oss-adoption.md —",
