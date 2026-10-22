@@ -77,6 +77,10 @@ docs/
                            the gate uses it
   release-engineering.md   deploy stack vs production baseline — Scion
                            question, parallel-agent risks, gap list
+  testing-strategy.md      what tests prove vs what typed judgment proves;
+                           taxonomy + conventions for agent-written code
+  oncall-playbooks.md      runbook/incident framework + where Devin Oncall,
+                           Grokbot, cron sweeps each plug in
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
