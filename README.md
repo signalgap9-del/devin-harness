@@ -95,6 +95,9 @@ docs/
                            the real remaining 10% + ERP playbook example
   production-methodologies.md    TBD/GitHub flow/Gitflow, env promotion,
                            change mgmt, release trains — all URLs
+  release-orchestration.md       the finished machines (Octopus, GitLab,
+                           Harness, ServiceNow DevOps) + GOV.UK's real
+                           public pipeline as reference architecture
   agents-md-layering.md    the hierarchical AGENTS.md system + migration
   ascii-diagrams.md        AWS-style ASCII diagram conventions
 
