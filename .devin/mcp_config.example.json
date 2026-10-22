@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "gcloud": {
+      "command": "npx",
+      "args": ["-y", "@google-cloud/gcloud-mcp"]
+    },
+    "browsermcp": {
+      "command": "cmd",
+      "args": ["/c", "npx", "@browsermcp/mcp@latest"]
+    },
+    "wavespeed": {
+      "command": "npx",
+      "args": ["-y", "@wavespeed/mcp"],
+      "env": {
+        "WAVESPEED_API_KEY": "${WAVESPEED_API_KEY}"
+      }
+    },
+    "tiktok-ads": {
+      "url": "https://business-api.tiktok.com/open_mcp/tt-ads-mcp-layer",
+      "transport": "http"
+    }
+  }
+}

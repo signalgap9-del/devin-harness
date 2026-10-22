@@ -1,0 +1,5 @@
+ops/verify/action-log.jsonl
+.devin/mcp_config.local.json
+.devin/mcp_config.json
+*.log
+node_modules/
