@@ -32,7 +32,8 @@ Rule stays: use the maintained tool; hand-roll only what it can't do.
 | openai/codex | `openai/codex` | REFERENCE — the AGENTS.md layering impl + app-server pattern |
 | graphify | `safishamsi/graphify` — Apache-2.0 | READY — `uv tool install graphifyy` + `graphify install`; optional code-graph layer, see `context-engineering.md` |
 | impeccable | `pbakaus/impeccable` — Apache-2.0 | READY — `npx impeccable install`; design-quality CLI + `--json` CI gate |
-| pstack / open-pstack | `poteto` (Cursor) / `ericlitman/open-pstack` (Claude/Codex, MIT) | READY — workflow skill packs |
+| pstack / open-pstack | `poteto` (Cursor) / `ericlitman/open-pstack` (Claude/Codex, MIT) | READY — `/plugin marketplace add ericlitman/open-pstack` + `/plugin install pstack@open-pstack`; 50+ workflow skills (how/why/architect/arena/unslop/reflect/automate-me). Alt: `michael-denyer/pstack-claude` (adds cursor-team-kit imports + SessionStart auto-fire) |
+| agent-skills (Osmani) | `addyosmani/agent-skills` — MIT, ~109k★ | READY — `npx skills add addyosmani/agent-skills`; 24 SDLC skills + /spec→/plan→/build→/test→/review→/ship commands, 70+ agent targets. Overlap note: our verify-with-sources/quality-judge cover part of it — install for the workflow phases we lack |
 | jev-use + Decision API | npm `jev-use@0.8.0`, decisionapi.org | ADOPTED in livepair gate (`ops/verify/jev.mjs`) |
 | jev-review / diffjury | ecosystem | DEFERRED — needed when agent-diff volume outgrows human review |
 

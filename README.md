@@ -77,7 +77,14 @@ ops/verify/
   prompt-guard.mjs             external-claim → forced source verification
   claim-guard.mjs              done-claim vs test-evidence check
   business-metrics.example.mjs business-metric sweep skeleton
+  harness.test.mjs             the harness's own test suite (11 tests)
+ops/dispatch/
+  devin-session.mjs            the call a dispatcher makes → Devin session URL
+  dispatch-rules.md            signal→session table (Grokbot/cron contract)
 docs/
+  the-loop.md              the full runtime workflow — Grokbot dispatches,
+                           Devin executes inside guards+ledger+gates,
+                           memory persists. Read this first.
   devin-features.md        Devin capability map (memory, oncall, playbooks…)
   patterns.md              gray failures, fail-loud, canaries, SPOF policy
   observability.md         synthetic checks vs business metrics

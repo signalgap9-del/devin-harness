@@ -70,20 +70,25 @@ test("session-start runs and reports git state", () => {
   assert.match(r.stdout, /git:|head:/);
 });
 
-test("setup.mjs installs into a fresh git repo, idempotent on rerun", () => {
+// setup.mjs only exists in the harness source repo — adopted repos get the
+// copied layer, not the installer. Skip these tests when it's absent.
+const SETUP = join(ROOT, "setup.mjs");
+const hasSetup = existsSync(SETUP);
+
+test("setup.mjs installs into a fresh git repo, idempotent on rerun", { skip: !hasSetup }, () => {
   const tmp = mkdtempSync(join(tmpdir(), "setup-"));
   execFileSync("git", ["init", "-q"], { cwd: tmp });
-  const first = spawnSync("node", [join(ROOT, "setup.mjs"), tmp], { encoding: "utf8" });
+  const first = spawnSync("node", [SETUP, tmp], { encoding: "utf8" });
   assert.equal(first.status, 0, first.stderr);
   for (const p of [".devin/hooks.v1.json", "ops/verify/agent-guard.mjs", "AGENTS.md"])
     assert.ok(existsSync(join(tmp, p)), `missing ${p}`);
-  const second = spawnSync("node", [join(ROOT, "setup.mjs"), tmp], { encoding: "utf8" });
+  const second = spawnSync("node", [SETUP, tmp], { encoding: "utf8" });
   assert.match(second.stdout, /skip/); // nothing clobbered on rerun
 });
 
-test("setup.mjs refuses non-git targets", () => {
+test("setup.mjs refuses non-git targets", { skip: !hasSetup }, () => {
   const tmp = mkdtempSync(join(tmpdir(), "setup-nogit-"));
-  const r = spawnSync("node", [join(ROOT, "setup.mjs"), tmp], { encoding: "utf8" });
+  const r = spawnSync("node", [SETUP, tmp], { encoding: "utf8" });
   assert.equal(r.status, 1);
   assert.match(r.stderr, /not a git repo/);
 });

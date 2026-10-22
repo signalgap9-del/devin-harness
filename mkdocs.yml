@@ -10,6 +10,7 @@ theme:
 nav:
   - README: README.md
   - Start here:
+    - docs/the-loop.md
     - docs/autonomous-ops.md
     - docs/oss-adoption.md
     - docs/oss-stack.md
