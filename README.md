@@ -81,6 +81,8 @@ docs/
                            taxonomy + conventions for agent-written code
   oncall-playbooks.md      runbook/incident framework + where Devin Oncall,
                            Grokbot, cron sweeps each plug in
+  harness-vs-labs.md       honest diff vs Anthropic/OpenAI published
+                           structure — gaps, fixes, adoption path
   ascii-diagrams.md        AWS-style ASCII diagram conventions
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
