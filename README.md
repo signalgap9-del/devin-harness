@@ -23,6 +23,17 @@ of a blank context.
 ## Quickstart
 
 ```bash
+git clone https://github.com/signalgap9-del/devin-harness
+cd devin-harness
+node setup.mjs /path/to/your/repo          # copies hooks+guards+skills+templates
+node setup.mjs /path/to/repo --with-docs   # also the knowledge docs
+```
+
+Then: adapt `AGENTS.md` (see `docs/agents-md-layering.md`), fill
+`.devin/mcp_config.local.json` from the example. Never overwrites without
+`--force`.
+
+```bash
 # 1. copy the harness into your repo
 cp -r .devin ops AGENTS.example.md /path/to/your-repo/
 cd /path/to/your-repo && mv AGENTS.example.md AGENTS.md
