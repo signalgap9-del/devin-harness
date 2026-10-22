@@ -22,14 +22,20 @@ if (!existsSync(join(TARGET, ".git"))) {
 const COPIES = [
   [".devin/config.json", true],
   [".devin/hooks.v1.json", true],
+  [".devin/hooks.extended.example.json", true],
   [".devin/mcp_config.example.json", true],
   [".devin/skills", true],
   ["ops/verify/agent-guard.mjs", true],
   ["ops/verify/file-guard.mjs", true],
   ["ops/verify/agent-ledger.mjs", true],
+  ["ops/verify/session-start.mjs", true],
+  ["ops/verify/prompt-guard.mjs", true],
+  ["ops/verify/claim-guard.mjs", true],
   ["ops/verify/business-metrics.example.mjs", true],
   ["ops/verify/README.md", true],
   ["templates/agents", true],
+  ["templates/decisions", true],
+  ["templates/incidents", true],
   ["AGENTS.example.md", true],
 ];
 if (WITH_DOCS) COPIES.push(["docs", true]);

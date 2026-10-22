@@ -1,0 +1,21 @@
+{
+  "_comment": "Full-lifecycle hook wiring. hooks.v1.json covers PreToolUse/PostToolUse (the two events every harness ships). The events below are Claude-Code-lifecycle names — register whichever your harness supports; scripts are no-ops-safe and degrade silently. Copy into hooks.v1.json to activate.",
+  "SessionStart": [
+    {
+      "matcher": "",
+      "hooks": [{ "type": "command", "command": "node ops/verify/session-start.mjs", "timeout": 10 }]
+    }
+  ],
+  "UserPromptSubmit": [
+    {
+      "matcher": "",
+      "hooks": [{ "type": "command", "command": "node ops/verify/prompt-guard.mjs", "timeout": 5 }]
+    }
+  ],
+  "Stop": [
+    {
+      "matcher": "",
+      "hooks": [{ "type": "command", "command": "node ops/verify/claim-guard.mjs", "timeout": 5 }]
+    }
+  ]
+}

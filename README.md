@@ -14,7 +14,10 @@ of a blank context.
 | Exec guard | `ops/verify/agent-guard.mjs` | PreToolUse hook — deterministic regex rules that *block* dangerous shell commands before they run (<50ms, no model call). |
 | File guard | `ops/verify/file-guard.mjs` | Same idea for edit/write — blocks secret files, migration edits, runtime-state edits. |
 | Action ledger | `ops/verify/agent-ledger.mjs` | PostToolUse hook — appends every tool call (secrets redacted) to `action-log.jsonl` so a judge can review the *session*, not just the diff. |
-| Hook wiring | `.devin/config.json` + `hooks.v1.json` | Turns the three guards on for every session in this repo. |
+| Session start | `ops/verify/session-start.mjs` | SessionStart payload — dirty tree, stale locks, open review obligations, incident index. Session starts informed. |
+| Prompt guard | `ops/verify/prompt-guard.mjs` | UserPromptSubmit payload — detects external-knowledge questions, injects mandatory source verification. |
+| Claim guard | `ops/verify/claim-guard.mjs` | Stop payload — edits happened but no test ran after → loud "unverified" advisory. |
+| Hook wiring | `.devin/config.json` + `hooks.v1.json` + `hooks.extended.example.json` | Pre/PostToolUse active now; extended example wires the lifecycle events your harness supports. |
 | MCP config | `.devin/mcp_config.example.json` | Example MCP servers (gcloud, browser, provider SDKs) with env-var indirection — never keys in the file. |
 | Business metrics | `ops/verify/business-metrics.example.mjs` | Cron-swept checks that ask "is work actually flowing" — zero-floor, rate-collapse, false-success patterns. See `docs/observability.md`. |
 | Skills | `.devin/skills/` | Domain skills the agent auto-invokes: SEO, ads-ops, copywriting, landing pages, CRO, ICP, audience research, quality judging, **verify-with-sources** (forced primary-source research). MIT sources in `ATTRIBUTION.md`. |
@@ -70,6 +73,9 @@ ops/verify/
   agent-guard.mjs              pre-exec command rules
   file-guard.mjs               pre-edit file rules
   agent-ledger.mjs             post-tool action log
+  session-start.mjs            session-open state report
+  prompt-guard.mjs             external-claim → forced source verification
+  claim-guard.mjs              done-claim vs test-evidence check
   business-metrics.example.mjs business-metric sweep skeleton
 docs/
   devin-features.md        Devin capability map (memory, oncall, playbooks…)
@@ -116,11 +122,15 @@ docs/
                            Backstage/IDP landscape, AGENTS.md split —
                            company-production level
   agents-md-layering.md    the hierarchical AGENTS.md system + migration
+  autonomous-ops.md        the full autonomy stack — every layer that lets
+                           an agent code unsupervised, what we have, gaps
   ascii-diagrams.md        AWS-style ASCII diagram conventions
 
 templates/
   agents/                  AGENTS.root + AGENTS.subtree templates —
                            the layering system ready to fill in
+  decisions/               ADR-0000 template — decision records
+  incidents/               NNN template — incident → durable-artifact rule
   oss-stack.md             curated OSS per layer (impeccable, pstack, graphify…)
 ```
 
