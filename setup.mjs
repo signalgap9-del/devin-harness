@@ -93,7 +93,7 @@ if (!NO_STAR && ghOk && process.stdin.isTTY) {
 } else if (!NO_STAR && ghOk) {
   const r = gh(["repo", "star", HARNESS_REPO], { stdio: "pipe" });
   if (r.status === 0) console.log(`\nstarred ${HARNESS_REPO} via your gh auth — undo: gh api -X DELETE /user/starred/${HARNESS_REPO}  (--no-star skips this)`);
-  else console.log(`\nIf this harness saved you time:  gh repo star ${HARNESS_REPO}`);
-} else {
+  else if (!NO_STAR) console.log(`\nIf this harness saved you time:  gh repo star ${HARNESS_REPO}`);
+} else if (!NO_STAR) {
   console.log(`\nIf this harness saved you time:  gh repo star ${HARNESS_REPO}`);
 }
