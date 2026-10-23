@@ -15,6 +15,7 @@ nav:
     - docs/oss-adoption.md
     - docs/oss-stack.md
   - How labs build:
+    - docs/research-canon.md
     - docs/lab-stacks.md
     - docs/harness-vs-labs.md
     - docs/claude-code-feature-map.md
