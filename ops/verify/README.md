@@ -26,12 +26,17 @@ unparseable payload), block rather than wave through.
 Keep the block reason actionable — it's the agent's only signal for what
 to do instead.
 
-## The bigger gate pattern
+## The bigger gate pattern — the review stack (ported from production)
 
-These hooks police *during* the session. The same repo pattern scales to a
-deploy gate: a sequential checklist (diff audit → schema drift → typecheck
-→ tests → local boot → route smoke → visual check → copy audit) that must
-pass before any upload runs, where **every step fails loud and every child
-process has a timeout**. `action-log.jsonl` doubles as the gate's input —
-an LLM judge can review the session's behavior against AGENTS.md, not just
-the final diff.
+Beyond the in-session hooks, this directory carries the full review stack:
+
+| Script | Role |
+|---|---|
+| `gate.mjs` | Deterministic diff gate — forbidden suppressions/skipped tests/secret-shaped literals in added lines + route smoke (200 AND SSR marker). No model anywhere. |
+| `dep-audit.mjs` | Supply-chain gate — every NEW dependency in a package.json diff checked against npm truth: publish age (<7d blocks), weekly downloads, deprecated flag, OSV vulns. |
+| `jev-client.mjs` | Jev typed-judgment client — one `judge()` call checks every constraint at once; 0.8 confidence threshold blocks. Needs `jev-use` (optional dep) + `TYPESAFE_API_KEY`. Missing either → advisory-only, determinism still gates. |
+| `jev-gate.mjs` | The diff review gate — collects diff (untracked files folded in as pseudo-hunks, else new files bypass review), runs dep-audit + unvetted-endpoint scan deterministically, then Jev over diff + `action-log.jsonl` + `tasks/plan.md` (plan drift is decidable). `state.json` = persistent review memory: resolution receipts downgrade known findings deterministically so the model only ever blocks on NEW violations. |
+| `predeploy.example.mjs` | Deploy-gate skeleton — rename to `predeploy.mjs`, fill in your build/boot steps, wire `npm run deploy` through it so a bare deploy command can't bypass the gate. Deploy lock + NODE_OPTIONS floor + process-cleanup patterns included (each was a real incident). |
+
+`state.json`, `action-log.jsonl`, `deploy.lock` are runtime state —
+gitignored, never committed.

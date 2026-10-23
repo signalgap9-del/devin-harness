@@ -1,0 +1,17 @@
+{
+  "name": "devin-harness",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Portable agent harness — hooks, guards, typed-review gates, dispatch contract, OSS-first stack curation.",
+  "scripts": {
+    "test": "node --test ops/verify/harness.test.mjs",
+    "gate": "node ops/verify/gate.mjs",
+    "review": "node ops/verify/jev-gate.mjs",
+    "dep-audit": "node ops/verify/dep-audit.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "optionalDependencies": {
+    "jev-use": "0.8.0"
+  }
+}

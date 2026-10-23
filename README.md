@@ -20,6 +20,7 @@ of a blank context.
 | Hook wiring | `.devin/config.json` + `hooks.v1.json` + `hooks.extended.example.json` | Pre/PostToolUse active now; extended example wires the lifecycle events your harness supports. |
 | MCP config | `.devin/mcp_config.example.json` | Example MCP servers (gcloud, browser, provider SDKs) with env-var indirection — never keys in the file. |
 | Business metrics | `ops/verify/business-metrics.example.mjs` | Cron-swept checks that ask "is work actually flowing" — zero-floor, rate-collapse, false-success patterns. See `docs/observability.md`. |
+| Review gates | `ops/verify/gate.mjs` + `dep-audit.mjs` + `jev-gate.mjs` | Diff review stack: deterministic suppression/secret scan → npm supply-chain audit → Jev typed judgment (14 constraints, plan-drift aware, persistent `state.json` memory so resolved findings never re-block). `predeploy.example.mjs` = deploy-gate skeleton. |
 | Skills | `.devin/skills/` | Domain skills the agent auto-invokes: SEO, ads-ops, copywriting, landing pages, CRO, ICP, audience research, quality judging, **verify-with-sources** (forced primary-source research). MIT sources in `ATTRIBUTION.md`. |
 | Docs | `docs/` | The pattern library: observability, on-call/Slack wiring, security+CI, agent orchestration (Grok↔Devin), OSS stack, Devin feature map. |
 

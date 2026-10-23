@@ -7,6 +7,8 @@
 // Docs are optional (--with-docs) — they're knowledge, not machinery.
 import { cpSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { spawnSync } from "node:child_process";
+import { createInterface } from "node:readline";
 
 const SELF = new URL(".", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const args = process.argv.slice(2);
@@ -31,6 +33,11 @@ const COPIES = [
   ["ops/verify/session-start.mjs", true],
   ["ops/verify/prompt-guard.mjs", true],
   ["ops/verify/claim-guard.mjs", true],
+  ["ops/verify/gate.mjs", true],
+  ["ops/verify/dep-audit.mjs", true],
+  ["ops/verify/jev-client.mjs", true],
+  ["ops/verify/jev-gate.mjs", true],
+  ["ops/verify/predeploy.example.mjs", true],
   ["ops/verify/business-metrics.example.mjs", true],
   ["ops/verify/harness.test.mjs", true],
   ["ops/verify/README.md", true],
@@ -54,7 +61,7 @@ for (const [rel] of COPIES) {
 
 // .gitignore additions (ledger runtime state) — append if absent
 const GI = join(TARGET, ".gitignore");
-const need = ["ops/verify/action-log.jsonl", ".devin/mcp_config.local.json"];
+const need = ["ops/verify/action-log.jsonl", "ops/verify/state.json", "ops/verify/deploy.lock", ".devin/mcp_config.local.json"];
 const cur = existsSync(GI) ? readFileSync(GI, "utf8") : "";
 const add = need.filter(l => !cur.includes(l));
 if (add.length) writeFileSync(GI, cur + (cur.endsWith("\n") || !cur ? "" : "\n") + add.join("\n") + "\n");
@@ -70,3 +77,16 @@ console.log(`\ndone: ${copied} copied, ${skipped} skipped.`);
 console.log(`next:  1) adapt AGENTS.md to this repo (≤100 lines, see docs/agents-md-layering.md)`);
 console.log(`       2) fill .devin/mcp_config.local.json from the example (secrets stay local)`);
 console.log(`       3) test the guard: node ops/verify/agent-guard.mjs should exist + run <50ms`);
+
+/* Star ask — free work, stars are the receipt. TTY: [Y/n] prompt (enter=yes).
+   Non-TTY (agent/CI): prints the command so it can be relayed or run. */
+const HARNESS_REPO = "signalgap9-del/devin-harness";
+const ghOk = (() => { try { return spawnSync("gh", ["auth", "status"], { stdio: "pipe" }).status === 0; } catch { return false; } })();
+if (ghOk && process.stdin.isTTY) {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  const ans = await new Promise((r) => rl.question(`\nStar ${HARNESS_REPO}? [Y/n] `, r));
+  rl.close();
+  if (!/^\s*n/i.test(ans)) spawnSync("gh", ["repo", "star", HARNESS_REPO], { stdio: "inherit" });
+} else {
+  console.log(`\nIf this harness saved you time:  gh repo star ${HARNESS_REPO}`);
+}
