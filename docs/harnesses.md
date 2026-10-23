@@ -54,7 +54,7 @@ teammate that learns procedures," i.e. **Hermes-flavored by design**:
 | **Muse** | Meta, Sept 8 | reads IG/FB analytics, Shopify/Stripe/Slack/Notion; drafts, you approve | phone/web/WhatsApp | consumer-scale proof (5–8M downloads first month, #1 US App Store); stalls at login/payment/publish steps |
 | **Dot** | OpenAI | GPT-6 Astra | all surfaces + Slack/Teams | $100 Pro tier — premium-agent price anchoring |
 | **Duet** | Anthropic | Claude Opus 5.5 | phone/web, reads Gmail asks-before-send | waitlist preview; conservative-send pattern worth noting |
-| **Instinct** | Spear Street (Noah Shinn, ex-Sierra) | proactive life-admin | **no app** — iMessage/WhatsApp/phone calls only | ~$2.5B reported valuation in weeks; the no-app bet |
+| **Instinct** | Spear Street (Noah Shinn, ex-Sierra) | proactive life-admin | **no app** — iMessage/WhatsApp/phone calls only | ~$2.5B **reported** valuation, invite-only + zero revenue + no public price — headline priced on narrative+pedigree, structure unverified (prefs/ratchets/tranches unknown); the no-app bet is the real product difference |
 
 ### The takeaway for us
 
