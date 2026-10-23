@@ -30,6 +30,7 @@ Rule stays: use the maintained tool; hand-roll only what it can't do.
 | anthropics/skills | `anthropics/skills` | REFERENCE + vendor source |
 | anthropics/claude-cookbooks | `anthropics/claude-cookbooks` | REFERENCE — patterns |
 | openai/codex | `openai/codex` | REFERENCE — the AGENTS.md layering impl + app-server pattern |
+| Hermes Agent | `NousResearch/hermes-agent` — MIT, ~256k★ | READY — self-hostable life-agent with built-in learning loop (auto skill-creation, session recall, cron, subagents, any-model). See `harnesses.md` — the closed-loop reference impl |
 | graphify | `safishamsi/graphify` — Apache-2.0 | READY — `uv tool install graphifyy` + `graphify install`; optional code-graph layer, see `context-engineering.md` |
 | CodeQL / Glean / Kythe / SCIP / Joern | `github/codeql`, `facebookincubator/Glean`, `kythe/kythe`, `sourcegraph/scip`, `joernio/joern` | READY — code-as-database layer (L2 perception); see `agent-perception.md`. Glean needs a store; CodeQL has GH-native CI path |
 | aider repomap | `aider-chat/aider` | READY — the cheap L1: tree-sitter repo map per turn; pattern worth lifting even without aider |

@@ -41,6 +41,7 @@ nav:
     - docs/context-engineering.md
     - docs/agents-md-layering.md
     - docs/agent-orchestration.md
+    - docs/harnesses.md
     - docs/agent-memory.md
     - docs/agent-standards.md
     - docs/decision-models.md
