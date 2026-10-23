@@ -43,6 +43,31 @@ ledger/validated (ours is auditable; Hermes' agent-curated loop trusts
 the model more). Worth tracking as the pattern to beat: if agent-curated
 memory proves safe, it's less plumbing than ours.
 
+## The personal-agent wave (Aug–Oct 2026) — same pattern, managed
+
+The consumer-agent cohort that shipped this quarter — all "persistent
+teammate that learns procedures," i.e. **Hermes-flavored by design**:
+
+| Agent | By | Learning surface | Surfaces | Catch worth copying/avoiding |
+|---|---|---|---|---|
+| **Grok Bot** | xAI × Cursor, beta Aug 11 | "show a task once (≤10 min) → drafts a reusable skill"; named persistent Bots, routines on schedule, bots hand work to each other | iOS/Android/Mac/Win/Linux, @bot on X | **shared-computer model**: all your bots share one cloud machine — logins are account-scoped, xAI says don't treat bots as security boundaries. No dry-run. Bots billed on top of plan (~$30 SuperGrok / Cursor $20+) |
+| **Muse** | Meta, Sept 8 | reads IG/FB analytics, Shopify/Stripe/Slack/Notion; drafts, you approve | phone/web/WhatsApp | consumer-scale proof (5–8M downloads first month, #1 US App Store); stalls at login/payment/publish steps |
+| **Dot** | OpenAI | GPT-6 Astra | all surfaces + Slack/Teams | $100 Pro tier — premium-agent price anchoring |
+| **Duet** | Anthropic | Claude Opus 5.5 | phone/web, reads Gmail asks-before-send | waitlist preview; conservative-send pattern worth noting |
+| **Instinct** | Spear Street (Noah Shinn, ex-Sierra) | proactive life-admin | **no app** — iMessage/WhatsApp/phone calls only | ~$2.5B reported valuation in weeks; the no-app bet |
+
+### The takeaway for us
+
+The labs all converged on the same shape: **persistent agent + reusable
+skills + owned surfaces + approval gates**. Grok Bot's "teach once →
+skill" is literally the Hermes learning loop productized; Duet's
+read-your-mail-ask-before-send is our own fail-loud doctrine in consumer
+form. The security lesson to copy-and-avoid: Grok Bot's shared computer
+makes handoffs cheap but flattens isolation — in our dispatch design the
+equivalent decision is whether dispatched sessions share credentials
+(they shouldn't — scoped keys per session class, like our
+`dispatch-rules.md` boundary rules).
+
 ## Where each sits in our loop (`the-loop.md`)
 
 - Grokbot → dispatch slot (already wired: `ops/dispatch/`)
