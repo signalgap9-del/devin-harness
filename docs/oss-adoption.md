@@ -119,6 +119,11 @@ Rule stays: use the maintained tool; hand-roll only what it can't do.
 | `alphagov/govuk-ai-accelerator` | REFERENCE — baseline-comparison harness for AI output (our canary pattern) |
 | `alphagov/govuk-infrastructure` | REFERENCE — the real public deploy pipeline (Argo Workflow → ArgoCD) |
 | `alphagov` RFC repos | REFERENCE — public decision process |
+| `UKGovernmentBEIS/inspect_ai` | **READY** — UK AISI eval framework; private task suites for our own benchmark (`agent-standards.md`) |
+| `UKGovernmentBEIS/inspect_evals` | REFERENCE — 200+ prebuilt evals, one-command agent benchmarks |
+| `i-dot-ai/consult` | REFERENCE — live gov AI pipeline (incubation stage) |
+| `i-dot-ai/redbox` | REFERENCE-ONLY — archived; read `5-key-lessons`, don't adopt |
+| promptfoo / lm-eval-harness / openai-evals | READY — eval+red-team tools, `agent-standards.md` |
 
 ## Evaluated → NO
 

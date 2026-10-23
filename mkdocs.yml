@@ -41,6 +41,7 @@ nav:
     - docs/agents-md-layering.md
     - docs/agent-orchestration.md
     - docs/agent-memory.md
+    - docs/agent-standards.md
     - docs/decision-models.md
     - docs/devin-features.md
     - docs/grokbot-architecture.md
