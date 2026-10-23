@@ -1,10 +1,18 @@
 # devin-harness
 
-An agent-harness starter for [Devin](https://devin.ai) CLI / Devin Desktop —
-the working setup distilled from running a production multi-tenant SaaS
-with autonomous agents for months. Drop it into any repo and the agent
-starts with guardrails, memory-shaped rules, and observable deploys instead
-of a blank context.
+<p align="center">
+  <a href="https://github.com/signalgap9-del/devin-harness/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/signalgap9-del/devin-harness?style=flat-square" /></a>
+  <a href="https://github.com/signalgap9-del/devin-harness/actions/workflows/test.yml"><img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/signalgap9-del/devin-harness/test.yml?style=flat-square" /></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
+</p>
+
+**The OSS harness for agentic repos** — hooks, guards, typed review gates,
+dispatch contract, and a curated stack, distilled from months of running a
+production multi-tenant SaaS with autonomous agents. Drop it into any repo
+and the agent starts with guardrails, memory-shaped rules, and observable
+deploys instead of a blank context.
+
+[English](README.md) · [한국어](README.ko.md)
 
 ## What's inside
 
