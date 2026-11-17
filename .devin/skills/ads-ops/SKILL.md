@@ -1,6 +1,6 @@
 ---
 name: ads-ops
-description: LivePair paid-acquisition ops — Google Ads + Reddit Ads for the studio. Use when touching ADVERTISING.md, campaign scripts, conversion events, the Reddit/gtag pixels, geo-gate vs ad traffic, or any "run ads / is the funnel tracked" question.
+description: SaaS paid-acquisition ops — Google Ads + Reddit Ads for the studio. Use when touching ADVERTISING.md, campaign scripts, conversion events, the Reddit/gtag pixels, geo-gate vs ad traffic, or any "run ads / is the funnel tracked" question.
 ---
 
 # Paid acquisition for your-product.com
@@ -29,8 +29,8 @@ keywords, negatives, budgets. This skill is the operational state + rules.
 | Keyword Planner (volume/CPC research) | `apps/web/scripts/google-ads/kw-planner.mjs` | live — `node kw-planner.mjs "kw…"` / `--file` / `--url`; real Google Ads data, read-only |
 | Reddit Ads API scripts | `apps/web/scripts/reddit/` | client ready — **advertiser profile SUSPENDED**, appeal needed |
 | Ads conversion actions | `conversions.mjs` + send_to snippets in sign-up/billing | live — LP-SignUp/LP-Purchase primary, LP-BeginCheckout secondary |
-| BigQuery ads transfer | `my-gcp-project:livepair_ads` `p_ads_*` daily 06:00 UTC | live — runs as ads SA, see bq-transfer.mjs |
-| Local ops console | `ops/ads-console.mjs` → Desktop `LivePair Ops\1 - Ads Console.cmd` | live — status/start/stop/budget/cpc + reports, localhost:4300 |
+| BigQuery ads transfer | `my-gcp-project:app_ads` `p_ads_*` daily 06:00 UTC | live — runs as ads SA, see bq-transfer.mjs |
+| Local ops console | `ops/ads-console.mjs` → Desktop `App Ops\1 - Ads Console.cmd` | live — status/start/stop/budget/cpc + reports, localhost:4300 |
 | Spend brakes | APP_KV `signup_cap`, `live_*` caps | live |
 
 ## Launch checklist (update statuses as things land)
@@ -174,7 +174,7 @@ edgier". Never advertise the spicy layer; it's discovered on-site.
   or tCPA. Never PMax/broad before the conversion loop is fed.
 - Reddit last-click undervalues — judge with 24–48h view-through too.
 - Warehouse: BQ transfer lands `p_ads_*_3464240376` in
-  `my-gcp-project:livepair_ads` daily (config in scripts/google-ads/README).
+  `my-gcp-project:app_ads` daily (config in scripts/google-ads/README).
   `ClickView.gclid` joins to `user.attribution` for spend→margin queries.
 
 ## Third-party tools warning

@@ -7,7 +7,7 @@ worth linking. Verified against the live repos Oct 24, 2026.
 
 | Tool | Repo | Why it matters |
 |---|---|---|
-| **Inspect AI** | `UKGovernmentBEIS/inspect_ai` — MIT, ~3k★ | UK AI Security Institute's eval framework. Task = dataset + solver + scorer. Runs arbitrary external agents — **Claude Code, Codex CLI, Gemini CLI can all be benchmarked**. Sandboxing for untrusted code (Docker/K8s/Modal/Proxmox). 200+ prebuilt evals via `inspect_evals` — GAIA, SWE-bench, agent benchmarks run in one command. **This is the METR-style standard the user means: it's how you build your OWN benchmark** — define livepair-specific tasks (gen pipeline, auth journey, reconcile correctness) as Inspect tasks and the suite becomes our regression benchmark across models/versions. |
+| **Inspect AI** | `UKGovernmentBEIS/inspect_ai` — MIT, ~3k★ | UK AI Security Institute's eval framework. Task = dataset + solver + scorer. Runs arbitrary external agents — **Claude Code, Codex CLI, Gemini CLI can all be benchmarked**. Sandboxing for untrusted code (Docker/K8s/Modal/Proxmox). 200+ prebuilt evals via `inspect_evals` — GAIA, SWE-bench, agent benchmarks run in one command. **This is the METR-style standard the user means: it's how you build your OWN benchmark** — define saas-app-specific tasks (gen pipeline, auth journey, reconcile correctness) as Inspect tasks and the suite becomes our regression benchmark across models/versions. |
 | promptfoo | `promptfoo/promptfoo` | evals + red-teaming, CI-friendly |
 | lm-evaluation-harness | `EleutherAI/lm-evaluation-harness` | classic model-level evals |
 | openai/evals | `openai/evals` | OpenAI's eval registry |
@@ -50,7 +50,7 @@ worth linking. Verified against the live repos Oct 24, 2026.
 ## What we'd actually build
 
 Inspect gives us the METR-style trick without the lab: define ~10
-livepair-critical tasks (auth journey completes, gen call returns valid
+product-critical tasks (auth journey completes, gen call returns valid
 media, reconcile invariants hold, /mcp tool responds) as `Task`s with
 scorers → `inspect eval` per model/config change → a private benchmark.
 That's the honest version of "can the agent do OUR work" — public

@@ -39,9 +39,9 @@ route tables, MCP endpoints). RE only enters for systems you *don't*
 control and can't instrument — the real ERP case: legacy screens with
 no API (UI automation/log introspection), vendor binaries, undocumented
 protocols. Even there the order is: official API → documented export →
-introspection → RE last. For LivePair: not needed — everything is ours.
+introspection → RE last. For the SaaS: not needed — everything is ours.
 
-## What we can generate TODAY for livepair-deploy
+## What we can generate TODAY for app-deploy
 
 Cheap perception artifacts that don't exist yet:
 

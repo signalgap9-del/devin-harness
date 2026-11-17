@@ -6,11 +6,42 @@
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
 </p>
 
-**The OSS harness for agentic repos** — hooks, guards, typed review gates,
-dispatch contract, and a curated stack, distilled from months of running a
-production multi-tenant SaaS with autonomous agents. Drop it into any repo
-and the agent starts with guardrails, memory-shaped rules, and observable
-deploys instead of a blank context.
+**The OSS harness for agentic repos** — deterministic pre-tool guards, lifecycle
+hooks, an append-only action ledger, typed diff-review gates, and a 30-doc
+production engineering corpus, distilled from operating multi-tenant SaaS and
+enterprise repositories with autonomous coding agents.
+
+- **Author:** [Yunseop Im](https://signalgap9-del.github.io) ([GitHub](https://github.com/signalgap9-del) · [LinkedIn](https://www.linkedin.com/in/yunseop-i-207a7215a/))
+- **Deep-dive teardowns:** [Building an OS for autonomous coding agents](https://signalgap9-del.github.io/writing/agents.html) · [Production agent architecture, pass^k evals & failure modes](https://signalgap9-del.github.io/writing/agent-architecture-evals.html)
+
+## Architecture at a glance
+
+```
+SessionStart ──► session-start.mjs (dirty tree, stale locks, open obligations, incident index)
+      │
+UserPromptSubmit ──► prompt-guard.mjs (detects external API/SDK claims → forces primary-source check)
+      │
+PreToolUse (<50ms, deterministic, zero LLM calls)
+  ├── agent-guard.mjs  blocks force-push, standalone deploy, destructive SQL/rm before execution
+  └── file-guard.mjs   blocks secret files (.env*), immutable migrations, runtime state edits
+      │
+PostToolUse ──► agent-ledger.mjs (redacts secrets → appends structured trace to action-log.jsonl)
+      │
+Stop ──► claim-guard.mjs (compares last file edit vs last test run → flags unverified "done" claims)
+      │
+PR / Predeploy Gate ──► gate.mjs + dep-audit.mjs + jev-gate.mjs
+                        (suppression/test-deletion scan → supply-chain audit → stateful typed review)
+```
+
+## Production failure modes this harness eliminates
+
+| Agent failure mode in the wild | Deterministic countermeasure in `devin-harness` |
+|---|---|
+| **Reward-hacking green CI** (`test.skip`, `@ts-ignore`, lowered thresholds) | `ops/verify/gate.mjs` scans diffs and hard-blocks suppression tokens or deleted tests |
+| **Context-compaction amnesia** (long session forgets turn-1 deploy/DB rules) | `PreToolUse` shell & file guards enforce rules outside the model context in `<50ms` |
+| **Premature "done" claims** (edits a file after running tests, never re-runs) | `Stop` hook (`claim-guard.mjs`) checks `action-log.jsonl` timestamps and raises a loud warning |
+| **Monolithic `AGENTS.md` token bloat** (~10k tokens diluting model attention) | Hierarchical `AGENTS.root` + lazy subtree rules (`docs/agents-md-layering.md`, ~70% fewer baseline tokens) |
+| **Infinite LLM reviewer nitpick loops** | `ops/verify/jev-gate.mjs` persists hunk-scoped state so resolved findings never re-block |
 
 ## What's inside
 

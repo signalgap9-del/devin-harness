@@ -65,7 +65,7 @@ Playbooks aren't "restart it" — worked example for the classic:
              repeats → gate rule or test gets added in postmortem
 ```
 
-Same skeleton fits LivePair (gen-failures spike, webhook silence) —
+Same skeleton fits the SaaS (gen-failures spike, webhook silence) —
 the domain names change, the loop doesn't. The responder — Devin
 Oncall, Grokbot-dispatched session, or human — runs identical steps
 because the playbook is the contract.

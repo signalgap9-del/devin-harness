@@ -38,7 +38,7 @@ Rule stays: use the maintained tool; hand-roll only what it can't do.
 | impeccable | `pbakaus/impeccable` — Apache-2.0 | READY — `npx impeccable install`; design-quality CLI + `--json` CI gate |
 | pstack / open-pstack | `poteto` (Cursor) / `ericlitman/open-pstack` (Claude/Codex, MIT) | READY — `/plugin marketplace add ericlitman/open-pstack` + `/plugin install pstack@open-pstack`; 50+ workflow skills (how/why/architect/arena/unslop/reflect/automate-me). Alt: `michael-denyer/pstack-claude` (adds cursor-team-kit imports + SessionStart auto-fire) |
 | agent-skills (Osmani) | `addyosmani/agent-skills` — MIT, ~109k★ | READY — `npx skills add addyosmani/agent-skills`; 24 SDLC skills + /spec→/plan→/build→/test→/review→/ship commands, 70+ agent targets. Overlap note: our verify-with-sources/quality-judge cover part of it — install for the workflow phases we lack |
-| jev-use + Decision API | npm `jev-use@0.8.0`, decisionapi.org | ADOPTED in livepair gate (`ops/verify/jev.mjs`) |
+| jev-use + Decision API | npm `jev-use@0.8.0`, decisionapi.org | ADOPTED in saas-app gate (`ops/verify/jev.mjs`) |
 | jev-review / diffjury | ecosystem | DEFERRED — needed when agent-diff volume outgrows human review |
 
 ## VCS, review & merge
@@ -90,7 +90,7 @@ Rule stays: use the maintained tool; hand-roll only what it can't do.
 
 | Tool | Status |
 |---|---|
-| Unleash / Flagsmith / OpenFeature | DEFERRED — trigger: flags outgrow env vars/KV (livepair uses KV caps — documented local equivalent) |
+| Unleash / Flagsmith / OpenFeature | DEFERRED — trigger: flags outgrow env vars/KV (saas-app uses KV caps — documented local equivalent) |
 | GrowthBook | DEFERRED — experimentation program trigger |
 
 ## Contracts, tests & repo hygiene

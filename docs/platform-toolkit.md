@@ -1,6 +1,6 @@
 # The platform toolkit — ADRs, reusable workflows, Backstage/IDPs
 
-Company-production level, not LivePair-specific. How each mechanism
+Company-production level, not product-specific. How each mechanism
 actually works, and the honest "is there an all-in-one" answer.
 
 ## 1. ADR mechanics — how decisions actually live

@@ -17,7 +17,7 @@ to install it via `setup.mjs`.
 | **Research truth** | UserPromptSubmit injection | external claims from memory = confident wrongness | `prompt-guard.mjs` + `verify-with-sources` skill |
 | **Done honesty** | Stop-hook check | "done" claims with no test run after last edit | `claim-guard.mjs` (advisory) |
 | **Memory** | skills (declarative) + ledger (episodic) + state.json (synapse) | same mistakes re-paid every session | `.devin/skills/`, `ops/verify/state.json` |
-| **Judgment** | Jev typed review over diffs | properties tests don't check: scope creep, weakened bar, missing verify path | `jev.mjs` (livepair repo) |
+| **Judgment** | Jev typed review over diffs | properties tests don't check: scope creep, weakened bar, missing verify path | `jev.mjs` (saas-app repo) |
 | **Release truth** | canary + ledger + gates | 200-OK-but-broken deploys, silent webhook death | `predeploy.mjs`, `auth-canary.mjs` |
 
 ## What Anthropic's stack does that we don't (yet)

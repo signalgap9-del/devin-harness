@@ -20,7 +20,7 @@ flagged; verify before quoting externally.
 
 | Piece | Now | After design | Note |
 |---|---|---|---|
-| AGENTS.md (monolith ~1000 lines, livepair) | ~9–10k | ~2.5k | root ≤100 lines + one subtree — saves ~7k/session |
+| AGENTS.md (monolith ~1000 lines, saas-app) | ~9–10k | ~2.5k | root ≤100 lines + one subtree — saves ~7k/session |
 | Own 11 skills (descriptions only) | ~1k | ~1k | bodies load per-invoke |
 | pstack subset — 12 of 59 | 0 | ~1.2k | workflows only, NOT the 19 principle docs |
 | agent-skills missing — ~10 of 24 | 0 | ~1k | see overlap finding below |

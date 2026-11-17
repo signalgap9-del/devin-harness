@@ -1,7 +1,7 @@
 # Release engineering — production deploy-stack audit
 
 What a gated deploy buys, and what's still missing before this stack is
-"production-grade" by industry standards. Audited against the real LivePair
+"production-grade" by industry standards. Audited against the real the SaaS
 lane (`npm run deploy` → 12-stage gate → wrangler upload → canaries).
 
 ## Scion question, answered honestly

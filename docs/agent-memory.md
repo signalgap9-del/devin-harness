@@ -57,7 +57,7 @@ the main agent wrong):
 | Write side — distilled lessons | ✅ `state.json` synapse (per-file strikes, recurring violations) + AGENTS.md "burned" notes + action ledger |
 | Retrieval side — embed task → fetch relevant experience | ❌ missing. We re-read everything instead of asking "what broke here last time?" |
 | Expiry/correction of stale entries | ❌ `state.json` grows; nothing deprecates |
-| Storage | ✅ Vectorize (`livepair-refs` pattern) or even D1 — entries are small text |
+| Storage | ✅ Vectorize (`tenant-refs` pattern) or even D1 — entries are small text |
 
 The cheapest production version: an `experience` namespace in the existing
 Vectorize index + a distill-on-failure step in `jev.mjs` (it already sees

@@ -1,6 +1,6 @@
 ---
 name: seo
-description: LivePair SEO checklist — sitemap, hreflang, indexing, geo-gate interplay. Use when changing marketing routes, adding pages, debugging "no traffic" in a region, or before any deploy that touches public surfaces.
+description: SaaS SEO checklist — sitemap, hreflang, indexing, geo-gate interplay. Use when changing marketing routes, adding pages, debugging "no traffic" in a region, or before any deploy that touches public surfaces.
 ---
 
 # SEO operations for your-product.com

@@ -33,7 +33,7 @@ Rules:
 
 ## Migrating a monolith (our real case)
 
-LivePair `AGENTS.md` (~1000 lines) splits like:
+the SaaS `AGENTS.md` (~1000 lines) splits like:
 
 | Section today | Destination |
 |---|---|
